@@ -9,5 +9,10 @@ def index(request):
     })
 
 def renderEntry(request, entry):
-    return render(request, "encyclopedia/testentry.html", {"entry": entry})
+    entries = util.list_entries()
+    if entry in entries:
+        return render(request, "encyclopedia/testentry.html", {"entry": f"Your entry {entry}, Found  "})
+    else:
+        return render(request, "encyclopedia/testentry.html", {"entry": f"Your entry {entry}, was't Found  "})
+    
 
