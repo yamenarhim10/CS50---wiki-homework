@@ -13,6 +13,6 @@ def renderEntry(request, entry):
     if entry in entries:
         return render(request, "encyclopedia/testentry.html", {"entry": f"Your entry {entry}, Found  "})
     else:
-        return render(request, "encyclopedia/testentry.html", {"entry": f"Your entry {entry}, was't Found  "})
+        return render(request, "encyclopedia/testentry.html", {"entry": f"Your entry {entry}, wasn't Found  "})
     
 
