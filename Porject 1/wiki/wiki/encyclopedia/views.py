@@ -20,7 +20,7 @@ def renderEntry(request, entry):
         html = markdown2.markdown(util.get_entry(entry))
         return render(request, "encyclopedia/Entry.html", {"entry":html})
     else:
-        return render(request, "encyclopedia/404 error.html", {"entry": f"Your entry {entry}, wasn't Found  "})
+        return render(request, "encyclopedia/errors.html", {"entry": f"{entry}","error": "404"})
     
 def search(request):
     if request.method == 'POST':
@@ -44,7 +44,28 @@ def search(request):
 
 def partial_matches(request):
     matches = request.GET.get('matches', '').split(',')
-    print(matches)
     return render(request, "encyclopedia/partial_matches.html", {
         "matches": matches
     })
+
+def new_page(request):
+    return render(request, "encyclopedia/New_Page.html")
+
+
+def create(request):
+    if request.method == 'POST':
+        title = request.POST.get('Title', '')
+        content = request.POST.get('Entry', '')
+
+        title = util.remove_all_extra_spaces(title)
+        content = util.remove_all_extra_spaces(content)
+
+        content = util.concatenate_and_format(title,content)
+        
+        save_entry_response = util.save_entry(title,content)
+        if save_entry_response == "alreadyexists":
+            return render(request, "encyclopedia/errors.html", {"entry": title,"error": "alreadyexists"})
+        else:
+            return HttpResponseRedirect(reverse("encyclopedia:entry",args=[title]))
+    else:
+        return HttpResponse("Invalid Post method")

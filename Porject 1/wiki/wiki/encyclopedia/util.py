@@ -3,6 +3,7 @@ import re
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 
+
 import markdown2
 
 def list_entries():
@@ -13,6 +14,10 @@ def list_entries():
     return list(sorted(re.sub(r"\.md$", "", filename)
                 for filename in filenames if filename.endswith(".md")))
 
+def concatenate_and_format(a, b):
+    # Format the strings with a new line between them
+    result = f"# {a}\n{b}"
+    return result
 
 def save_entry(title, content):
     """
@@ -22,8 +27,9 @@ def save_entry(title, content):
     """
     filename = f"entries/{title}.md"
     if default_storage.exists(filename):
-        default_storage.delete(filename)
+        return "alreadyexists"
     default_storage.save(filename, ContentFile(content))
+    return "done"
 
 
 def get_entry(title):
@@ -36,3 +42,12 @@ def get_entry(title):
         return f.read().decode("utf-8")
     except FileNotFoundError:
         return None
+
+def remove_all_extra_spaces(input_string):
+    # Split the string into words, ignoring extra spaces
+    parts = input_string.split()
+    
+    # Join the words with a single space
+    filtered_string = ' '.join(parts)
+    
+    return filtered_string
