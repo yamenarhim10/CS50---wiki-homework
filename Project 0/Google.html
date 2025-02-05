@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* General Styles */
+        body {
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            margin: 0; /* Remove default margin */
+        }
+
+        a {
+            text-decoration: none;
+            padding: 5px;
+        }
+
+        /* Input Wrapper and Custom Input Styles */
+        .input-wrapper {
+            position: relative;
+            width: 600px; /* Adjust the width as needed */
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding-left: 40px; /* Adjust padding to make space for the icon */
+            border-radius: 50px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .input-wrapper::before {
+            content: ''; /* Remove the URL here */
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px; /* Adjust icon size */
+            height: 20px; /* Adjust icon size */
+            background-image: url('Search.png'); /* Use background-image instead */
+            background-size: cover; /* Ensure the image fits within the dimensions */
+            background-repeat: no-repeat;
+        }
+
+        .custom-input {
+            width: 600px; /* Change the width as needed */
+            border-radius: 50px; /* Adjust the radius for rounded corners */
+            padding-left: 50px; /* Add some padding for a better look */
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border: 1px solid #ccc; /* Optional: add a border */
+            background-color: rgb(194, 195, 197);
+        }
+
+        /* Positioning Styles */
+        .align-right-corner {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .center-page {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        /* Image Styles */
+        .inverted-image {
+            filter: invert(100%);
+        }
+
+        /* Footer Styles */
+        .black-background {
+            background-color: rgb(23, 23, 23);
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            display: flex; /* Use Flexbox for positioning child elements */
+            justify-content: space-between; /* Space out child elements */
+            padding: 10px; /* Add padding if needed */
+        }
+
+        .white-link {
+            color: aliceblue;
+        }
+
+        /* Wrapper Styles */
+        .wrapped {
+            padding: 10px;
+        }
+
+        /* Button Styles */
+        .Google-button {
+            background-color: #ccc;
+            border-radius: 0px;
+            padding: 7px;
+            width: 150px;
+            transition: border-color 0.3s ease, color 0.3s ease;
+        }
+
+        .Google-button:hover {
+            background-color: #ccc;
+            border-color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="align-right-corner">
+        <a href="">Gmail</a>
+        <a href="">Images</a>
+        <a style=" text-decoration: none;margin:5px;margin-top: 5px;padding: 5px;" href="">
+            <svg height="24" width="24" viewBox="0 0 24 24">
+                <path d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z"></path>
+            </svg>
+        </a>
+        <a style="margin:5px; padding: 5px;" href="">
+            <svg height="30" width="30" viewBox="0 0 100 100">
+                <defs>
+                    <clipPath id="circleClip">
+                        <circle cx="50" cy="50" r="50" />
+                    </clipPath>
+                </defs>
+                <image href="Yamenarhim.jpg" x="0" y="0" height="100" width="100" clip-path="url(#circleClip)" />
+            </svg>
+        </a>
+    </div>
+    <div class="center-page">
+        <img src="Google Icon.png" alt="description of image" height="92" width="272" class="inverted-image">
+        <div class="input-wrapper">
+            <input class="custom-input" type="text" placeholder="Enter text here">
+        </div>
+        <div class="wrapped">
+            <input class="Google-button" type="button" value="Google Search">
+            <input class="Google-button" type="button" value="I am feeling lucky">
+        </div>
+    </div>
+    <div name="Footer" class="black-background">
+        <div>
+            <a class="white-link" href="">About</a>
+            <a class="white-link" href="">Advertising</a>
+            <a class="white-link" href="">Business</a>
+            <a class="white-link" href="">How search works</a>
+        </div>
+        <div>
+            <a class="white-link" href="">Privacy</a>
+            <a class="white-link" href="">Terms</a>
+            <a class="white-link" href="">Settings</a>
+        </div>
+    </div>
+</body>
+</html>
+
+
+

@@ -4,7 +4,6 @@ from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 
 import markdown2
-import os
 
 def list_entries():
     """
