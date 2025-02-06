@@ -69,3 +69,9 @@ def create(request):
             return HttpResponseRedirect(reverse("encyclopedia:entry",args=[title]))
     else:
         return HttpResponse("Invalid Post method")
+
+def random_page(request):
+    entries = util.list_entries()
+    number_of_entries = len(entries)
+    number = 1
+    return HttpResponseRedirect(reverse("encyclopedia:entry",args=[entries[number]]))
